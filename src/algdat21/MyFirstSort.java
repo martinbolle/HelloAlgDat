@@ -7,10 +7,13 @@ package algdat21;
 public class MyFirstSort {
     public static void main(String[] args) {
 
-        System.out.println("Hello algdat");
+        //System.out.println("Hello algdat");
+
+
 
         int values[] = {1, 2, 7, 4, 6, 9};
 
+        System.out.println(findMax(values, 0, values.length));
         myFirstSort(values);
         findTwoMacIndexes(values, 0,values.length);
 
@@ -39,6 +42,7 @@ public class MyFirstSort {
                System.out.print(values[i] + ", ");
              }
             System.out.println();
+
         }
              */
         }
