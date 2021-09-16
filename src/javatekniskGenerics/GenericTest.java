@@ -20,6 +20,7 @@ public class GenericTest {
         System.out.println(maks_generic(d));
 
     }
+    //Vanlig maks metode for å finne indeks til maks-verdi.
     static int maks (Integer [] values){
         int current_max = values[0];
         int current_index = 0;
@@ -32,6 +33,8 @@ public class GenericTest {
         }
         return current_index;
     }
+    //Her bruker vi Generics. ALtås kan samme metode brukes til
+    //Ulike objekter. Både til Char, int og String.
     static
     <T extends Comparable<? super T>>
     int maks_generic (T [] values){
