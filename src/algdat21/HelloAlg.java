@@ -1,3 +1,5 @@
+package algdat21;
+
 public class HelloAlg {
 
     public static void  main (String [] args){

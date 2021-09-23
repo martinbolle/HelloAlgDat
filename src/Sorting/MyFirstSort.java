@@ -1,4 +1,4 @@
-package algdat21;
+package Sorting;
 
 /**
  * [alt]+enter mens du holder over klassen for å lage test.

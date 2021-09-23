@@ -1,4 +1,4 @@
-package algdat21;
+package Sorting;
 
 import static org.junit.jupiter.api.Assertions.*;
 
