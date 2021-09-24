@@ -4,17 +4,11 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        System.out.println("Testing");
-
         int [] a = {8,5,3,6,5,2,9};
-        System.out.println("Usortert array");
-        System.out.println(Arrays.toString(a));
 
-
+        System.out.println("Usortert: " + Arrays.toString(a));
         quicksort(a, 0, a.length-1);
-        System.out.println("Sortert arry");
-        System.out.println(Arrays.toString(a));
-
+        System.out.println("Sortert: " + Arrays.toString(a));
 
     }
 
@@ -51,22 +45,22 @@ public class QuickSort {
 
 
 
-
-
-
         //3. Flytt skilleverdien(sist i arrayet) tilbake til riktig sortert plass.
         //  - (rett til høyre for siste verdi som er mindre enn skilleverdi)
         int sorted_index = index+1;
         int temp = values[sorted_index];
-        values[sorted_index] = pivot;
+        values[sorted_index] = values[right];
         values[right] = temp;
         System.out.println("Flytter pivot tilbake til indeks " + sorted_index);
+        System.out.println(Arrays.toString(values));
 
         //4. Gjenta for høyre sub-array og venstre sub-array.
         System.out.println("Rekursjon venstre sub-array");
         quicksort(values, left, sorted_index-1);
         System.out.println("Rekursjon høyre sub-array");
         quicksort(values, sorted_index+1, right);
+
+        System.out.println("Ferdig quicksort i intervaller [" + left + ", " + right + "]");
     }
 
     /**
@@ -80,7 +74,8 @@ public class QuickSort {
      * @param pivot
      * @return
      */
-    static int partition(int values[], int pivot, int left, int right){
+    public static
+    int partition(int values[], int pivot, int left, int right){
         int l = left;
         int r = right;
 
