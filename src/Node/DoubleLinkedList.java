@@ -41,7 +41,6 @@ public class DoubleLinkedList {
 
     /**
      * Konstruktør
-     * @param
      */
     DoubleLinkedList() {
         this.head = null;
@@ -102,7 +101,21 @@ public class DoubleLinkedList {
     /**
      * Add funksjon - legger til ved tail, sist i listen
      */
-    void add_Last(){
+    int add_Last(int value){
+        Node q = new Node(value);
+
+        if( (head == null) && (tail == null)){
+            head = q;
+            tail = q;
+            num_values+=1;
+        } else {
+            Node p = tail;
+            tail = q;
+            q.prev = p;
+            p.next = q;
+            num_values+=1;
+        }
+        return num_values;
 
     }
 
@@ -117,7 +130,7 @@ public class DoubleLinkedList {
             }
             if(value == num_values){
                 //spesialtilfelle
-                add_Last();
+                add_Last(value);
             }
 
             Node q = new Node(value);
