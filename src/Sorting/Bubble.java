@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Bubble {
     public static void main(String[] args) {
 
-        int [] values = {5, 6, 9, 2, 8, 3, 1};
+        int [] values = {4,3,2,1};
 
         // To for-løkker:
         // Ytre løkke: Sorterer ett tall per gjennomgang.
