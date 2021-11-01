@@ -16,7 +16,7 @@ public class DoubleLinkedList {
      * Representasjon av en node i en dobbelt
      * lenket liste
      */
-    static class Node {
+    public static class Node {
         int value;      //Verdien vi vil lagre. burde brukt generics.
         Node next;      //Peker til neste node eller null
         Node prev;      //Peker til forrige node eller null
