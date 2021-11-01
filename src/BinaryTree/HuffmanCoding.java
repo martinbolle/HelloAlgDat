@@ -1,43 +1,44 @@
 package BinaryTree;
 
+import java.util.PriorityQueue;
+
 public class HuffmanCoding {
 
     public static void main(String[] args) {
-      /*
+
         char [] symbols = {'E','T','I','A','N'};
         double [] frequencies = {0.4, 0.3, 0.1, 0.167, 0.033};
 
         //Gjør om dette arrayet til en prioritetskø.
         //1. Noder med lav frekvens har høy prioritet.
-        Node [] priority_queue = new Node[symbols.length];
+        PriorityQueue<Node> priority_queue = new PriorityQueue<>();
 
         //Legg inn alle noder i køen.
         for (int i = 0; i< symbols.length; i++){
-            priority_queue[i] = new Node(symbols[i], frequencies[i]);
+            priority_queue.add(new Node(symbols[i], frequencies[i]));
         }
 
-        while(!priority_queue.empty()){
+        while(priority_queue.size() > 1){
             //Ta ut de to nodene med lavest frekvens.
-            Node a = priority_queue.pop();
-            Node b = priority_queue.pop();
+            Node a = priority_queue.remove();
+            Node b = priority_queue.remove();
 
+            //Lager ny node som har summen av grekvensen til barne-noden a og b
             Node c = new Node(a, b);
 
-            priority_queue.push(c);
+            priority_queue.add(c);
         }
 
-        //
-        for(int i = 0; i< symbols.length; i++){
-            priority_queue[i].print();
+
+        //Skriv ut treet i pre orden rekkefølge
+        Node root = priority_queue.remove();
+        System.out.println(root);
         }
-        */
-    }
 
-
-
-
-    public static class Node {
+    public static
+    class Node implements Comparable<Node>{
         char symbol;
+        String bit_code;
         double frequency;
         Node left_child;
         Node right_child;
@@ -52,13 +53,24 @@ public class HuffmanCoding {
 
         Node(char symbol, double frequency){
             this.symbol = symbol;
+            this.bit_code = "";
             this.frequency = frequency;
+            this.left_child = null;
+            this.right_child = null;
+        }
+        public int compareTo(Node other) {
+            return Double.compare(this.frequency, other.frequency);
+        }
+        public String toString(){
+            String retval = this.symbol + ": " + this.frequency + ", ";
+            if(this.left_child != null){
+                retval += this.left_child.toString();
+            }
+            if(this.right_child != null){
+                retval += this.right_child.toString();
+            }
+            return retval;
         }
 
-        void print(){
-            System.out.println(this.symbol + ": " + this.frequency);
-        }
     }
-
-
 }
