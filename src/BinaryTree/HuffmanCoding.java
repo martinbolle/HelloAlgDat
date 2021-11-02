@@ -32,7 +32,16 @@ public class HuffmanCoding {
 
         //Skriv ut treet i pre orden rekkefølge
         Node root = priority_queue.remove();
+
+
+
+        //Lag bit-kodene.
+        //lag en rekursiv metode som går gjennom treet fra
+        //rot, og legger 0 til venstre og 1 til høyre
+        //for hver forgrening
+        root.makeBitCodes("");
         System.out.println(root);
+
         }
 
     public static
@@ -58,11 +67,33 @@ public class HuffmanCoding {
             this.left_child = null;
             this.right_child = null;
         }
+
+        public void makeBitCodes(String bit_code){
+            //Rekursiv metode.
+            //1 - kaller oss selv
+            //2 - basistilfelle
+            //3 - Forenkling
+
+            this.bit_code = bit_code;
+            if (this.left_child != null){
+                this.left_child.makeBitCodes(bit_code + "0");
+
+            }
+            if ( this.right_child != null){
+                this.right_child.makeBitCodes(bit_code + "1");
+            }
+
+        }
         public int compareTo(Node other) {
             return Double.compare(this.frequency, other.frequency);
         }
         public String toString(){
-            String retval = this.symbol + ": " + this.frequency + ", ";
+            String retval = "";
+            //Sjekke om vi er en bladnode
+            if (this.left_child == null && this.right_child == null){
+                 retval += this.symbol + ": " + this.bit_code + "\n ";
+
+            }
             if(this.left_child != null){
                 retval += this.left_child.toString();
             }
